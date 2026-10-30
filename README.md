@@ -23,7 +23,7 @@ codemeta.json         machine-readable metadata (CodeMeta 3.0)
 CITATION.cff          citation metadata
 ```
 
-## What the poster says, in brief
+## Poster summary
 
 (i) **Rabbits:** 1,045 km² of candidate release area lies inside the top third of the wildcat's land corridors, in ten priority survey blocks. 87% of it is on hunting land, so a rabbit baseline needs the hunters.
 
@@ -36,6 +36,16 @@ CITATION.cff          citation metadata
 (v) **Across the border:** 26% of the study area (2,694 km²) lies in Spain, along 166 km of border. Natura 2000 covers 32% of the study area, in sites that face each other across the border. Examples are Douro Internacional e Vale do Águeda and Arribes del Duero, Vale do Côa and Campo de Azaba, and Malcata and El Rebollar. The v6 connectivity model stops at the border, with no current on 96% of the Spanish side. The next step is a transfrontier study.
 
 These are screening maps, not release sites. Every candidate needs a field survey first.
+
+## Hypotheses
+
+H1 Rabbits follow the grazing mosaic. 
+H2 Wildcat habitat tracks rabbit habitat. 
+H3 Fire resets the rabbit mosaic, for better and worse. 
+H4 Water connectivity is limited by summer flow, not by barriers alone. 
+H5 Pond turtles persist where summer pools persist. 
+H6 A rabbit baseline protects the turtle. 
+H7 The rock-art corridor is also the best combined corridor.
 
 ## Rebuild
 
