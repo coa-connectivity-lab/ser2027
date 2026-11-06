@@ -64,6 +64,22 @@
       }
     }
   ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "@id": "https://github.com/VRConservation",
+      "name": "VRConservation",
+      "url": "https://github.com/VRConservation"
+    },
+    {
+      "@type": "Role",
+      "schema:contributor": {
+        "@id": "https://github.com/VRConservation"
+      },
+      "roleName": "Reviewer",
+      "description": "Review of v0.1 (pull request #2)"
+    }
+  ],
   "copyrightHolder": {
     "@type": "Person",
     "@id": "https://orcid.org/0009-0009-5689-7148"

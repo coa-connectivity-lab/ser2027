@@ -62,6 +62,10 @@ Angulo Lopez, L. (2026). *Rabbits and wildcats in the Greater Côa Valley: an op
 
 The DOI above is the concept DOI: it always resolves to the latest version. Version 0.1 is <https://doi.org/10.5281/zenodo.23638438>.
 
+## Review
+
+Version 0.1 was reviewed by [VRConservation](https://github.com/VRConservation) in [pull request #2](https://github.com/coa-connectivity-lab/ser2027/pull/2); the review notes are in `notes-vr.md`, and version 0.2 follows them.
+
 ## Licence
 
 Text and maps: CC BY 4.0. Code: MIT. See [LICENSE](LICENSE).
