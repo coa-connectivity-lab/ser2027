@@ -78,7 +78,7 @@ Start from the reviewer's structure (setting, methods, results, next steps), the
 
 ## 4. Zenodo
 
-New version of the same record (Zenodo, "New version" on 10.5281/zenodo.23638438), so the concept DOI stays the same:
+Linda adds v0.2 herself as a new version of the same record (Zenodo, "New version" on 10.5281/zenodo.23638438), so the concept DOI stays the same. What to upload and fill in:
 
 - Files: the v0.2 PDF, a preview PNG and the source zip of the tagged release `v0.2.0` (without the background images, see the licence note).
 - Title and keywords as in section 2; description rewritten for the wildcat and the rabbit.
@@ -93,7 +93,7 @@ New version of the same record (Zenodo, "New version" on 10.5281/zenodo.23638438
 3. Build: `python scripts/poster.py` (needs the v6 bundle and the caches named in `release_candidates.py`). Check: A0 portrait, fonts embedded, every figure on the poster matches the numbers `release_candidates.py` prints, no "turtle" left (`grep -i turtle scripts/poster.py abstract.md README.md`), the background is invisible behind the maps.
 4. Abstract and metadata.
 5. Ask the reviewer to look at the draft PDF in a PR before the Zenodo version.
-6. Merge, tag `v0.2.0`, deposit on Zenodo, update the abstract's submission on 3 Dec (deadline 29 Jan 2027).
+6. Merge and tag `v0.2.0`; Linda adds the new Zenodo version; update the abstract's submission on 3 Dec (deadline 29 Jan 2027).
 
 ## Open questions
 
