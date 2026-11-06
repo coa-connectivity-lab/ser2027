@@ -95,8 +95,13 @@ Linda adds v0.2 herself as a new version of the same record (Zenodo, "New versio
 5. Ask the reviewer to look at the draft PDF in a PR before the Zenodo version.
 6. Merge and tag `v0.2.0`; Linda adds the new Zenodo version; update the abstract's submission on 3 Dec (deadline 29 Jan 2027).
 
-## Open questions
+## Open questions, with proposed answers (to confirm)
 
-- Keep the "Why the Côa" panel (river and rock art), or drop the river too and keep the poster on land only?
-- Keep the Spain line, or move "extend the model into Spain" into the recommendations only?
-- Which of the three illustrations, or all three, for the background?
+(i) **Keep the "Why the Côa" panel?** Yes, but as two sentences, not a panel: one line under the header or at the foot of the left flank. It is the reviewer's missing link between the rock art and the study, and the reason the site is worth a poster. Say only what is measured: the river is free-flowing because the 1995 campaign stopped the dam to save the rock art; the rock-art core lies on the land corridor. **Before claiming the second half, compute it**: add to `release_candidates.py` the share of the rock-art core (`heritage_protection.gpkg`) inside the top third of the land current, and print it with the other figures. If the share is not clearly above a third, drop the corridor claim and keep the river sentence only. H7 stays in the preprint either way.
+
+(ii) **Where does the Spain line go?** Two places, no panel. On map (a), shade the Spanish side and label it: "The model stops at the border: 26% of the study area, no current on 96% of it." In the recommendations, as the last item: "Extend the model into Spain, to test whether the wildcat corridors continue into Campo de Azaba, El Rebollar and Arribes del Duero." The Natura 2000 and Biosphere Reserve detail moves to the README.
+
+(iii) **Which illustrations for the background?** *Movement* (Vale Carapito: herbivores, with a predator at the foot, "large herbivores and predators keep the valley open and alive") as the main wallpaper, since it is the predator-prey plate; *Connection* (Côa gorge and Penascosa) only behind the "Why the Côa" lines, if at all. Leave out *Water* (the Paul de Toirões wetland belongs to the turtle story that leaves the poster). Three conditions:
+- **Re-render, don't stretch.** The JPEGs are 1,600 × 2,000 px, about 48 dpi across an A0 sheet. Re-render the plate from `digital_landscapes.py` (in `Solo-field-illustrator-project-for-Rewilding-Portugal/research/rewilding-dynamics/scripts/`) at poster size, as line work only.
+- **No caption band and no logo.** The gallery JPEGs carry the plate caption and the Global Artivism Month logo at the bottom; neither belongs in the background.
+- **Recolour.** Drop the grey stone texture; draw the lines in a pale tint of the poster's coral on the cream paper, about 10-15% strength, so the maps and text stay clean.
