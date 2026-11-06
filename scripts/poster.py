@@ -103,16 +103,21 @@ natura_ib = gpd.read_file(N2K, layer="NaturaSite_polygon", bbox=tuple(gpd.GeoSer
 natura_ib = natura_ib[natura_ib.MS.isin(["PT", "ES"])].to_crs(3035)
 natura_ib["geometry"] = natura_ib.simplify(300)
 cand_in_natura = rc.cand_poly.union_all().intersection(natura_u).area / rc.cand_poly.union_all().area
-PAIRS_SHOWN = [("PTZPE0039", "Vale do Côa (PT)"), ("ES0000202", "Campo de Azaba (ES)"),
-               ("PTZPE0038", "Douro Internacional e Vale do Águeda (PT)"), ("ES0000118", "Arribes del Duero (ES)"),
-               ("PTCON0004", "Malcata (PT)"), ("ES4150032", "El Rebollar (ES)")]
-
+near_n2k = natura[natura.intersects(rc.area.buffer(30000))].union_all()
+in_n2k = ~geometry_mask([near_n2k], out_shape=rc.land.shape, transform=rc.template.rio.transform())
+modelled = rc.inside & ~np.isnan(rc.land)
+n2k_modelled = (in_n2k & modelled).sum() / modelled.sum()
+corridor_in_n2k = (rc.corridor & in_n2k & modelled).sum() / (rc.corridor & modelled).sum()
+block_dist_km = rc.priority.sort_values("rank").geometry.distance(near_n2k) / 1000
+blocks_near = int((block_dist_km.iloc[:5] < 4).sum())  # of the five largest-current blocks, how many within 4 km
 print(f"rabbit mosaic {habitat_km2:.0f} km², candidates {cand_km2:.0f} km², hunting {rc.hunt_share:.1%}, "
       f"two largest blocks {top2_share:.0%}, Faia Brava mosaic {rc.faia_mosaic:.0%}, burned since 2023 "
       f"{recent_burn_share:.2%}; corridor threshold {corridor_threshold:.3f}; rock-art core in corridor "
       f"{core_in_corridor:.1%}; Spain {spain_share:.1%}, unmodelled {spain_unmodelled:.0%}; GBIF rabbit "
       f"{rc.n_rabbit} in {len(rc.rabbit_cells)} cells, wildcat {rc.n_wildcat}; Natura 2000 {natura_share:.1%} of the "
-      f"area in {len(natura_in)} sites, {cand_in_natura:.1%} of the candidate area")
+      f"area in {len(natura_in)} sites, {cand_in_natura:.1%} of the candidate area; {n2k_modelled:.1%} of the "
+      f"modelled area, {corridor_in_n2k:.1%} of the corridors; top-5 blocks within 4 km: {blocks_near}; "
+      f"block distances {block_dist_km.round(1).tolist()}")
 
 
 # ---------------------------------------------------------------------------
@@ -455,10 +460,26 @@ world[~world.ADMIN.isin(["Portugal", "Spain"])].plot(ax=axn, color="#efece6", ed
 world[world.ADMIN == "Portugal"].plot(ax=axn, color="#e0ddd6", edgecolor="#8d806b", linewidth=1.0)
 world[world.ADMIN == "Spain"].plot(ax=axn, color="#d0ccc4", edgecolor="#8d806b", linewidth=1.0)
 natura_ib.plot(ax=axn, color=N2K_GREEN, alpha=0.75, edgecolor="none")
+# Two transboundary axes that meet in the study area: proposed, not modelled (the transfrontier study, H-next)
+AXES = {"Sistema Central": [(-7.75, 40.35), (-7.0, 40.25), (-6.55, 40.27), (-5.3, 40.3), (-4.1, 40.75)],
+        "Douro canyons": [(-7.15, 41.05), (-6.75, 41.2), (-6.4, 41.35), (-6.05, 41.6)]}
+for name, pts in AXES.items():
+    line = gpd.GeoSeries(gpd.points_from_xy(*zip(*pts)), crs=4326).to_crs(3035)
+    xs, ys = line.x.values, line.y.values
+    axn.plot(xs, ys, color=PURPLE, linewidth=6, linestyle=(0, (4, 2)), solid_capstyle="round", zorder=6)
+    axn.add_patch(FancyArrowPatch((xs[-2], ys[-2]), (xs[-1], ys[-1]), arrowstyle="-|>", mutation_scale=34,
+                                  color=PURPLE, lw=0, zorder=6))
+lab = gpd.GeoSeries(gpd.points_from_xy([-5.0, -5.85], [40.05, 41.75]), crs=4326).to_crs(3035)
+axn.text(lab.x[0], lab.y[0], "Sistema Central:\nEstrela, Malcata, Gata, Gredos", fontproperties=BOLD, fontsize=15,
+         color=PURPLE, va="top", ha="center", zorder=7,
+         bbox=dict(boxstyle="round,pad=0.2", facecolor=PAPER, edgecolor="none", alpha=0.85))
+axn.text(lab.x[1], lab.y[1], "Douro canyons:\nCôa, Douro Internacional, Arribes", fontproperties=BOLD, fontsize=15,
+         color=PURPLE, va="bottom", ha="left", zorder=7,
+         bbox=dict(boxstyle="round,pad=0.2", facecolor=PAPER, edgecolor="none", alpha=0.85))
 rc.study.to_crs(3035).boundary.plot(ax=axn, color=CORAL, linewidth=3.5, zorder=5)
 axn.text(ix0 + 0.13 * (ix1 - ix0), iy0 + 0.55 * (iy1 - iy0), "PORTUGAL", fontproperties=BOLD, fontsize=20,
          color=NAVY, ha="center", rotation=90)
-axn.text(ix0 + 0.52 * (ix1 - ix0), iy0 + 0.62 * (iy1 - iy0), "SPAIN", fontproperties=BOLD, fontsize=24,
+axn.text(ix0 + 0.66 * (ix1 - ix0), iy0 + 0.52 * (iy1 - iy0), "SPAIN", fontproperties=BOLD, fontsize=24,
          color="#5b5146", ha="center")
 sx0, sy0 = ix0 + 0.05 * (ix1 - ix0), iy0 + 0.05 * (iy1 - iy0)  # scale bar on this location map only
 axn.plot([sx0, sx0 + 200000], [sy0, sy0], color=NAVY, linewidth=4, solid_capstyle="butt")
@@ -470,18 +491,27 @@ axn.set_yticks([])
 for side in axn.spines.values():
     side.set_visible(False)
 
-T = Column(fig, 0.03 + nat_w + 0.02, 0.31, K_TOP)
-T.head("Natura 2000 around the study area", size=40)
-T.para(f"The study area (coral outline) among the Natura 2000 sites of Spain and Portugal. "
-       f"Natura 2000 covers "
-       f"{natura_share:.0%} of the study area, in {len(natura_in)} sites, and {cand_in_natura:.0%} of the rabbit "
-       "candidate area. The sites face each other across the border, but the model stops at it.", size=18)
-T.para("Facing sites: " + "; ".join(f"{PAIRS_SHOWN[k][1]} and {PAIRS_SHOWN[k + 1][1]}"
-                                    for k in range(0, len(PAIRS_SHOWN), 2)) + ".", size=17, prop=BOLD,
-       colour="#3f7d3a", spacing=1.25)
-T.para("Douro Internacional and Arribes del Duero are natural parks of the Meseta Ibérica transboundary Biosphere "
-       "Reserve (UNESCO, 2015). EEA Natura 2000, end-2024, SPA and SCI combined; Natural Earth.", size=15,
-       colour="#5b5146")
+T = Column(fig, 0.03 + nat_w + 0.02, 0.385, K_TOP)
+T.head("Why it matters for Natura 2000", size=40)
+T.items([
+    ("The corridors run between the sites.", f"Natura 2000 covers {n2k_modelled:.0%} of the modelled study area but "
+                                             f"only {corridor_in_n2k:.0%} of the wildcat's top corridors, and "
+                                             f"{cand_in_natura:.0%} of the rabbit candidate area. The links lie on "
+                                             "hunting land outside the sites: the landscape features the Habitats "
+                                             "Directive asks states to manage for the network's coherence (Art. 10)."),
+    ("The largest blocks sit beside the sites.", f"{blocks_near} of the five blocks with most corridor current lie "
+                                                 "within 4 km of Serra da Estrela or Malcata (PT)."),
+    ("Species of Community interest.", "The wildcat is strictly protected (Habitats Directive, Annex IV). The rabbit "
+                                       "is the main prey of raptors that SPAs protect under Annex I of the Birds "
+                                       "Directive, such as Bonelli's eagle and the eagle-owl."),
+    ("Two transboundary axes meet here.", "The Sistema Central (Estrela, Malcata, Gata, Gredos) runs east into Spain; "
+                                          "the Douro canyons (Côa, Douro Internacional, Arribes del Duero, part of the "
+                                          "Meseta Ibérica Biosphere Reserve, UNESCO 2015) run north. Proposed axes, "
+                                          "not modelled: the model stops at the border."),
+    ("Restoration law.", "Member states' national restoration plans under the Nature Restoration Regulation (EU) "
+                         "2024/1991 are a place for these links."),
+], size=17, spacing=1.28)
+T.para("EEA Natura 2000, end-2024, SPA and SCI; Natural Earth.", size=13, colour="#5b5146")
 
 stats = [(f"{cand_km2:,.0f}", "km² of rabbit candidate\narea inside the corridors"),
          ("10", "priority survey\nblocks"),
@@ -489,15 +519,15 @@ stats = [(f"{cand_km2:,.0f}", "km² of rabbit candidate\narea inside the corrido
          (f"{rc.n_rabbit}", f"GBIF rabbit records,\nin {len(rc.rabbit_cells)} cells of 5 km"),
          (str(rc.n_wildcat), "GBIF wildcat records\nin the study area"),
          (f"{spain_share:.0%}", "of the study area in Spain,\nnot yet modelled")]
-gx = 0.03 + nat_w + 0.02 + 0.31 + 0.015
+gx = 0.03 + nat_w + 0.02 + 0.385 + 0.01
 gw = 0.97 - gx
 for i, (big, small) in enumerate(stats):
     cx = gx + (i % 2 + 0.5) * gw / 2
     cy = K_TOP - 0.002 - (i // 2) * 0.054
-    fig.text(cx, cy, big, fontproperties=DISPLAY, fontsize=62, color=CORAL, va="top", ha="center")
-    fig.text(cx, cy - 66 / PT_H, small, fontproperties=BODY, fontsize=16, color=NAVY, va="top", ha="center",
+    fig.text(cx, cy, big, fontproperties=DISPLAY, fontsize=52, color=CORAL, va="top", ha="center")
+    fig.text(cx, cy - 56 / PT_H, small, fontproperties=BODY, fontsize=14, color=NAVY, va="top", ha="center",
              linespacing=1.2)
-K_BOTTOM = min(K_TOP - nat_h_pt / PT_H, T.y, K_TOP - 0.002 - 2 * 0.054 - (66 + 2 * 16 * 1.25) / PT_H)
+K_BOTTOM = min(K_TOP - nat_h_pt / PT_H, T.y, K_TOP - 0.002 - 2 * 0.054 - (56 + 2 * 14 * 1.25) / PT_H)
 panel_box(fig, 0.03, K_TOP + 0.004, K_BOTTOM, 0.94, colour=PAPER)
 
 # ---- Bottom row: method / results / the wildcat / recommendations ----------------
