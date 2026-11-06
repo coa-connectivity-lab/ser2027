@@ -1,19 +1,18 @@
 {
   "@context": "https://w3id.org/codemeta/3.0",
   "@type": "SoftwareSourceCode",
-  "identifier": "https://doi.org/10.5281/zenodo.23638438",
-  "name": "SER 2027 poster: rabbits, wildcats, pond turtles and a free-flowing river",
-  "description": "Code, figures and text for an A0 poster for the 12th SER World Conference on Ecological Restoration (Lisbon, 2027, Lands in Motion). One map combines a rabbit release screen inside the wildcat's land corridors, a pond turtle pool screen, the two UNESCO World Heritage areas and Natura 2000 sites of the Greater Côa Valley, Portugal, and the Portugal-Spain border. Every figure on the poster is computed from the Côa Valley Eco-Connectivity v6 data bundle. These are screening maps, not release sites.",
-  "version": "0.1",
+  "identifier": "https://doi.org/10.5281/zenodo.23638437",
+  "name": "SER 2027 poster: rabbits and wildcats in the Greater Côa Valley",
+  "description": "Code, figures and text for an A0 poster for the 12th SER World Conference on Ecological Restoration (Lisbon, 2027, Lands in Motion). Version 0.2 asks whether the European rabbit, the European wildcat's main prey, can be restored inside the corridors the wildcat already uses in the Greater Côa Valley, Portugal. Three maps: the land connectivity of the species group that includes the wildcat (after Fig. 4 of the workflow preprint, doi:10.5281/zenodo.22979020), and a rabbit habitat screen inside those corridors, with ten priority survey blocks, and the Natura 2000 sites around the study area in Portugal and Spain. Every figure on the poster is computed from the Côa Valley Eco-Connectivity v6 data bundle. These are screening maps, not release sites.",
+  "version": "0.2",
   "dateCreated": "2026-10-25",
-  "dateModified": "2026-10-25",
+  "dateModified": "2026-11-06",
   "codeRepository": "https://github.com/coa-connectivity-lab/ser2027",
   "issueTracker": "https://github.com/coa-connectivity-lab/ser2027/issues",
   "readme": "https://github.com/coa-connectivity-lab/ser2027/blob/main/README.md",
   "license": [
     "https://spdx.org/licenses/MIT",
-    "https://spdx.org/licenses/CC-BY-4.0",
-    "https://spdx.org/licenses/CC-BY-NC-4.0"
+    "https://spdx.org/licenses/CC-BY-4.0"
   ],
   "developmentStatus": "https://www.repostatus.org/#active",
   "programmingLanguage": {
@@ -43,11 +42,11 @@
     "circuit theory",
     "European rabbit",
     "European wildcat",
-    "pond turtle",
-    "free-flowing rivers",
+    "mesopredators",
+    "hunting land",
+    "fire",
     "Natura 2000",
     "transboundary conservation",
-    "World Heritage",
     "Côa Valley",
     "Portugal",
     "SER 2027",
@@ -83,7 +82,7 @@
     }
   ],
   "relatedLink": [
-    "https://zenodo.org/records/23638438",
+    "https://zenodo.org/records/23638437",
     "https://www.data.gouv.fr/datasets/coa-valley-eco-connectivity-v6",
     "https://github.com/coa-connectivity-lab/eco-connectivity-workflow",
     "https://github.com/coa-connectivity-lab/Solo-field-illustrator-project-for-Rewilding-Portugal",

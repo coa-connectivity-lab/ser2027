@@ -6,6 +6,8 @@ Linda Angulo Lopez, 6 November 2026
 
 Version 0.1 ([doi:10.5281/zenodo.23638438](https://doi.org/10.5281/zenodo.23638438), 25 Oct 2026) tried to carry three species, a river, a heritage story, three drawings and a cross-border section on one A0 sheet. The review in PR #2 (`notes-vr.md`, merged 6 Nov) found it hard to read without the preprints: no clear goal or questions up front, hypotheses buried at the bottom, one map that tries to show everything, and panels that read as asides.
 
+**Status, 6 Nov 2026: done on this branch** (poster, abstract, README and metadata; title changed to "Rabbits and wildcats in the Greater Côa Valley"; a Natura 2000 location map added; Linda adds the Zenodo version). The plan below is kept as written.
+
 Version 0.2 narrows the poster to **one predator-prey pair, the European wildcat and the European rabbit**, built on the two preprints (decision of 6 Nov, replacing the v6 notebook and the Global Artivism plates as sources):
 
 - **Workflow preprint**: Angulo Lopez (2026b), *Movement, Water, Connection: a reproducible Python connectivity workflow and field illustration for the Greater Côa Valley rewilding landscape, Portugal*, [doi:10.5281/zenodo.22979020](https://doi.org/10.5281/zenodo.22979020), CC BY 4.0. Figures and method: Fig. 4 *Movement* (land connectivity for wolf, wildcat and red deer, fire-aware, redrawn from `land_normalized_current.tif`), Fig. 3 (fire and barrier resistance), Fig. 8 (land tenure: Faia Brava and the ICNF hunting zones), Table 1 (focal species), Table 2 (direction-of-effect checks), and its limits (training accuracy 0.78-0.99 "is not validation").
