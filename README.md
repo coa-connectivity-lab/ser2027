@@ -58,9 +58,9 @@ The full source list is in the poster footer.
 
 ## Cite
 
-Angulo Lopez, L. (2026). *Rabbits and wildcats in the Greater Côa Valley: an open connectivity screen for trophic rewilding in northern Portugal* (Version v0.2) [Poster]. 12th SER World Conference on Ecological Restoration, Lisbon. Zenodo. <https://doi.org/10.5281/zenodo.23638437>
+Angulo Lopez, L. (2026). *Rabbits and wildcats in the Greater Côa Valley: an open connectivity screen for trophic rewilding in northern Portugal* (Version v0.2) [Poster]. 12th SER World Conference on Ecological Restoration, Lisbon. Zenodo. <https://doi.org/10.5281/zenodo.24013744>
 
-The DOI above is the concept DOI: it always resolves to the latest version. Version 0.1 is <https://doi.org/10.5281/zenodo.23638438>.
+The badge at the top is the concept DOI, <https://doi.org/10.5281/zenodo.23638437>: it always resolves to the latest version. Version 0.1 is <https://doi.org/10.5281/zenodo.23638438>.
 
 ## Review
 

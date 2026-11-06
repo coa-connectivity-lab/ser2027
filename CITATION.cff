@@ -9,9 +9,18 @@ authors:
     orcid: "https://orcid.org/0009-0009-5689-7148"
 date-released: 2026-11-06
 version: "0.2"
-# concept DOI: resolves to the latest version; add the v0.2 version DOI once deposited
-doi: 10.5281/zenodo.23638437
-url: "https://doi.org/10.5281/zenodo.23638437"
+doi: 10.5281/zenodo.24013744
+url: "https://doi.org/10.5281/zenodo.24013744"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24013744
+    description: "Version 0.2 (this version)"
+  - type: doi
+    value: 10.5281/zenodo.23638437
+    description: "Concept DOI, all versions; resolves to the latest"
+  - type: doi
+    value: 10.5281/zenodo.23638438
+    description: "Version 0.1"
 repository-code: "https://github.com/coa-connectivity-lab/ser2027"
 license:
   - CC-BY-4.0
