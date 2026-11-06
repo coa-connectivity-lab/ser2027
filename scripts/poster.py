@@ -492,24 +492,25 @@ for side in axn.spines.values():
     side.set_visible(False)
 
 T = Column(fig, 0.03 + nat_w + 0.02, 0.385, K_TOP)
-T.head("Why it matters for Natura 2000", size=40)
+T.head("Why it matters for Iberian connectivity and rewilding", size=40)
 T.items([
-    ("The corridors run between the sites.", f"Natura 2000 covers {n2k_modelled:.0%} of the modelled study area but "
-                                             f"only {corridor_in_n2k:.0%} of the wildcat's top corridors, and "
-                                             f"{cand_in_natura:.0%} of the rabbit candidate area. The links lie on "
-                                             "hunting land outside the sites: the landscape features the Habitats "
-                                             "Directive asks states to manage for the network's coherence (Art. 10)."),
-    ("The largest blocks sit beside the sites.", f"{blocks_near} of the five blocks with most corridor current lie "
-                                                 "within 4 km of Serra da Estrela or Malcata (PT)."),
-    ("Species of Community interest.", "The wildcat is strictly protected (Habitats Directive, Annex IV). The rabbit "
-                                       "is the main prey of raptors that SPAs protect under Annex I of the Birds "
-                                       "Directive, such as Bonelli's eagle and the eagle-owl."),
-    ("Two transboundary axes meet here.", "The Sistema Central (Estrela, Malcata, Gata, Gredos) runs east into Spain; "
-                                          "the Douro canyons (Côa, Douro Internacional, Arribes del Duero, part of the "
-                                          "Meseta Ibérica Biosphere Reserve, UNESCO 2015) run north. Proposed axes, "
-                                          "not modelled: the model stops at the border."),
-    ("Restoration law.", "Member states' national restoration plans under the Nature Restoration Regulation (EU) "
-                         "2024/1991 are a place for these links."),
+    ("A crossroads of two transboundary axes.", "The Sistema Central (Estrela, Malcata, Gata, Gredos) runs east into "
+                                                "Spain; the Douro canyons (Côa, Douro Internacional, Arribes del "
+                                                "Duero, in the Meseta Ibérica Biosphere Reserve, UNESCO 2015) run "
+                                                "north. Proposed axes, not modelled: the model stops at the border."),
+    ("The links lie between protected sites.", f"Natura 2000 covers {n2k_modelled:.0%} of the modelled study area "
+                                               f"but only {corridor_in_n2k:.0%} of the wildcat's top corridors and "
+                                               f"{cand_in_natura:.0%} of the rabbit candidate area. Restoration on "
+                                               "hunting land between sites is what joins the network (Habitats "
+                                               "Directive, Art. 10)."),
+    ("Stepping stones at the western end of the Sistema Central.", f"{blocks_near} of the five blocks with most "
+                                                                    "corridor current lie within 4 km of Serra da "
+                                                                    "Estrela or Malcata."),
+    ("Prey first, predators follow.", "The rabbit feeds the wildcat (Annex IV, Habitats Directive) and Annex I raptors "
+                                      "such as Bonelli's eagle and the eagle-owl, and it is the prey base of the "
+                                      "Iberian lynx, reintroduced in Portugal's Guadiana valley since 2015."),
+    ("Restoration law.", "National restoration plans under the Nature Restoration Regulation (EU) 2024/1991 are a "
+                         "place for these cross-border links."),
 ], size=17, spacing=1.28)
 T.para("EEA Natura 2000, end-2024, SPA and SCI; Natural Earth.", size=13, colour="#5b5146")
 
