@@ -613,7 +613,7 @@ F.para("Angulo Lopez, L. (2026a). Synthesis and research agenda for trophic rewi
        "Natural Earth.  GBIF.org occurrences, generalised to 5 km.  Resolução do Conselho de Ministros n.º 14/1996.  "
        "Maps: EPSG:3763; every figure is computed in scripts/poster.py from the v6 bundle.  Code written with AI "
        "assistance (Claude, Anthropic) from the author's method and direction, and reviewed by the author.  Reviewer: "
-       "VRConservation (GitHub).  Linda Angulo Lopez, 2026, poster " + VERSION + ". Text and maps CC BY 4.0; "
+       "Vance Russell (GitHub VRConservation).  Linda Angulo Lopez, 2026, poster " + VERSION + ". Text and maps CC BY 4.0; "
        "code MIT.", size=12, spacing=1.28)
 rc.band(fig, 0, 0.006, [BLUE, PURPLE, CORAL, SUN])
 

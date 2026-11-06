@@ -68,7 +68,8 @@
     {
       "@type": "Person",
       "@id": "https://github.com/VRConservation",
-      "name": "VRConservation",
+      "givenName": "Vance",
+      "familyName": "Russell",
       "url": "https://github.com/VRConservation"
     },
     {

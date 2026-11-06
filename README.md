@@ -64,7 +64,7 @@ The DOI above is the concept DOI: it always resolves to the latest version. Vers
 
 ## Review
 
-Version 0.1 was reviewed by [VRConservation](https://github.com/VRConservation) in [pull request #2](https://github.com/coa-connectivity-lab/ser2027/pull/2); the review notes are in `notes-vr.md`, and version 0.2 follows them.
+Version 0.1 was reviewed by Vance Russell ([VRConservation](https://github.com/VRConservation)) in [pull request #2](https://github.com/coa-connectivity-lab/ser2027/pull/2); the review notes are in `notes-vr.md`, and version 0.2 follows them.
 
 ## Licence
 
