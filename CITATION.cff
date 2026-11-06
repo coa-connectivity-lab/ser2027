@@ -1,28 +1,29 @@
 cff-version: 1.2.0
 message: "If you use this poster or its code, please cite it as below."
 type: dataset
-title: "Rabbits, wildcats, pond turtles and a free-flowing river: one open connectivity screen for trophic and hydrological rewilding in the Greater Côa Valley, Portugal (SER 2027 poster)"
+title: "Rabbits and wildcats in the Greater Côa Valley: an open connectivity screen for trophic rewilding in northern Portugal (SER 2027 poster)"
 authors:
   - family-names: Angulo Lopez
     given-names: Linda
     affiliation: Rewilding Portugal
     orcid: "https://orcid.org/0009-0009-5689-7148"
-date-released: 2026-10-25
-version: "0.1"
-doi: 10.5281/zenodo.23638438
-url: "https://doi.org/10.5281/zenodo.23638438"
+date-released: 2026-11-06
+version: "0.2"
+# concept DOI: resolves to the latest version; add the v0.2 version DOI once deposited
+doi: 10.5281/zenodo.23638437
+url: "https://doi.org/10.5281/zenodo.23638437"
 repository-code: "https://github.com/coa-connectivity-lab/ser2027"
 license:
   - CC-BY-4.0
-  - CC-BY-NC-4.0
   - MIT
 keywords:
   - rewilding
   - European rabbit
   - European wildcat
-  - pond turtle
+  - mesopredators
   - ecological connectivity
-  - free-flowing rivers
+  - hunting land
+  - Natura 2000
   - World Heritage
   - Côa Valley
 references:
